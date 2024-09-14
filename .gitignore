@@ -1,0 +1,13 @@
+# directories
+.terraform/
+learn-terraform
+ssh-key
+
+# files
+*.lock.hcl
+*.tfstate
+*.tfstate.*
+README-Local.md
+
+# log
+*.log
