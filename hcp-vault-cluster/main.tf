@@ -6,7 +6,7 @@ resource "hcp_hvn" "virgo" {
 }
 
 resource "hcp_vault_cluster" "virgo_vault_cluster" {
-  cluster_id = "virgo_vault_cluster"
+  cluster_id = "virgo-vault-cluster"
   hvn_id     = hcp_hvn.virgo.hvn_id
   tier       = "starter_small"
   public_endpoint = true
