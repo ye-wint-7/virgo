@@ -1,6 +1,6 @@
 output "hvn_id" {
   description = "HCP HVN ID"
-  value = hcp_hvn.vault_hvn
+  value = hcp_hvn.virgo.id
 }
 
 output "vault_id" {
