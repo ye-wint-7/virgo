@@ -5,7 +5,7 @@ resource "vault_mount" "kvv2" {
   options = {
     version = "2"
   }
-  description = "KV Version 2 secret engine mount"
+  description = "KV Version 2 secret engine mount "
 }
 
 # Writes a KV-V2 secret to a given path in Vault.
