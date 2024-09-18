@@ -1,7 +1,7 @@
 
 # Step (1) - Enable the JWT Auth Backend
 # Step (2) - Configure Trust with HCP Terraform
-resource "vault_jwt_auth_backend" "jwt" {
+resource "vault_jwt_auth_backend" "jwt_auth" {
   description        = "JWT auth backend for Dynamic Provider Credential"
   path               = "jwt"
   oidc_discovery_url = var.tfc_hostname
@@ -17,7 +17,7 @@ resource "vault_policy" "admin_policy" {
 
 # Step (4) - Create a JWT Auth Role
 resource "vault_jwt_auth_backend_role" "jwt_admin_role" {
-  backend        = vault_jwt_auth_backend.jwt.path
+  backend        = vault_jwt_auth_backend.jwt_auth.path
   role_name      = var.jwt_auth_role_name
   token_policies = [vault_policy.admin_policy.name]
 
