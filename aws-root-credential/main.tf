@@ -4,11 +4,12 @@ provider "aws" {
 
 module "iam_user_root_cred_policy" {
   source = "./modules/iam-policy"
-  
+
   name_prefix = "virgo-"
+  name        = "vault_root_cred_policy"
   path        = "/"
   description = "Vault Root Credential IAM USER Policy"
-  policy = <<EOF
+  policy      = <<EOF
 {
   "Statement": [
     {
