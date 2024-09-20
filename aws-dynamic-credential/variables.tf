@@ -30,5 +30,5 @@ variable "tfc_workspace_name" {
 variable "aws_region" {
   type        = string
   default     = "us-east-2"
-  description = "AWS region for all resources"
+  description = "AWS region for all resources "
 }
