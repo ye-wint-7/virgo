@@ -45,7 +45,7 @@ module "iam_user_root_cred" {
   source = "./modules/iam-user"
 
   name                          = var.iam_user_name
-  policy_arns                   = [module.iam_policy.arn]
+  policy_arns                   = [module.iam_user_root_cred_policy.arn]
   force_destroy                 = true
   create_iam_access_key         = false
   create_iam_user_login_profile = false
