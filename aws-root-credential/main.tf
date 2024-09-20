@@ -1,6 +1,5 @@
 module "iam_user_root_cred_policy" {
-  source = "https://github.com/terraform-aws-modules/terraform-aws-iam/tree/v5.44.0/modules/iam-policy"
-  version = "5.44.0"
+  source = "./modules/iam-policy"
   
   name_prefix = "virgo-"
   path        = "/"
@@ -43,8 +42,7 @@ EOF
 }
 
 module "iam_user_root_cred" {
-  source = "https://github.com/terraform-aws-modules/terraform-aws-iam/tree/v5.44.0/modules/iam-user"
-  version = "5.44.0"
+  source = "./modules/iam-user"
 
   name                          = var.iam_user_name
   policy_arns                   = [module.iam_policy.arn]
