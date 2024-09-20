@@ -1,7 +1,7 @@
 module "iam_user_root_cred_policy" {
-  source  = "terraform-aws-modules/iam/aws/modules/iam-policy"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git?ref=v5.44.0"
   version = "5.44.0"
-
+  
   name_prefix = "virgo-"
   path        = "/"
   description = "Vault Root Credential IAM USER Policy"
@@ -44,7 +44,7 @@ EOF
 }
 
 module "iam_user_root_cred" {
-  source  = "terraform-aws-modules/iam/aws/modules/iam-user"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-iam.git?ref=v5.44.0"
   version = "5.44.0"
 
   name                          = var.iam_user_name
