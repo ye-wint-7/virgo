@@ -1,4 +1,4 @@
-tfc_organization_name = "HelloCloud-7"
+tfc_organization_name = "HelloCloud-8"
 tfc_project_name      = "virgo"
 tfc_workspace_name    = "aws-*"
 
