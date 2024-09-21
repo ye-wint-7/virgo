@@ -43,7 +43,7 @@ output "iam_user_access_key" {
 
 output "iam_user_secret_key" {
   value     = module.iam_user_root_cred.iam_access_key_secret
-  sensitive = true
+  sensitive = false
 }
 
 
