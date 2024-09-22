@@ -59,3 +59,24 @@ module "iam_user_root_cred" {
     env     = "dev"
   }
 }
+
+resource "vault_aws_secret_backend" "aws_dev" {
+  access_key = module.iam_user_root_cred.iam_access_key_id
+  secret_key = module.iam_user_root_cred.iam_access_key_secret
+  region = var.region
+  path =  var.vault_aws_backend_path
+  default_lease_ttl_seconds = 900
+  max_lease_ttl_seconds = 1800
+}
+
+resource "vault_aws_secret_backend_role" "aws_dev_role" {
+  backend = vault_aws_secret_backend.aws_dev.path
+  name    = var.vault_aws_backend_role_name
+  credential_type = "iam_user"
+  policy_arns = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
+}
+
+data "vault_aws_access_credentials" "aws_dev_role_creds" {
+  backend = vault_aws_secret_backend.aws_dev.path
+  role    = vault_aws_secret_backend_role.aws_dev_role.name
+}
