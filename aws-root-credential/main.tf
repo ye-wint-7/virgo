@@ -31,7 +31,6 @@ module "iam_user_root_cred_policy" {
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:iam::${var.account_id}:user/${var.iam_user_name}",
         "arn:aws:iam::${var.account_id}:user/vault-*"
       ]
     }
