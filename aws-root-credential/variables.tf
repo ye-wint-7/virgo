@@ -18,11 +18,6 @@ variable "vault_aws_backend_path" {
   type        = string
 }
 
-variable "vault_aws_backend_path" {
-  description = "Vault backend path of aws secret engine"
-  type        = string
-}
-
 variable "vault_aws_backend_role_name" {
   description = "Vault AWS backend role name"
   type        = string
