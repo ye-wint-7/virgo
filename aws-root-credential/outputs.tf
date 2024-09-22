@@ -47,10 +47,10 @@ output "iam_user_arn" {
 # }
 
 output "aws_dev_role_access_key" {
-  value = vault_aws_access_credentials.aws_dev_role_creds.access_key
+  value = data.vault_aws_access_credentials.aws_dev_role_creds.access_key
 }
 
 output "aws_dev_role_secret_key" {
-  value = vault_aws_access_credentials.aws_dev_role_creds.secret_key
+  value = data.vault_aws_access_credentials.aws_dev_role_creds.secret_key
   sensitive = true
 }
