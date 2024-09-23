@@ -13,11 +13,6 @@ variable "iam_user_name" {
   type        = string
 }
 
-variable "account_id" {
-  description = "Account ID"
-  type        = string
-}
-
 variable "vault_aws_backend_path" {
   description = "Vault backend path of aws secret engine"
   type        = string
