@@ -2,6 +2,7 @@
 .terraform/
 learn-terraform
 ssh-key
+aws-vpc-network
 
 # files
 *.lock.hcl
