@@ -8,7 +8,7 @@ variable "iam_user_name" {
   type        = string
 }
 
-variable "account_id" {
+variable "aws_account_id" {
   description = "Account ID"
   type        = string
 }

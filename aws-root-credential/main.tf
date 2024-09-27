@@ -31,7 +31,7 @@ module "iam_user_root_cred_policy" {
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:iam::${var.account_id}:user/vault-*"
+        "arn:aws:iam::${var.aws_account_id}:user/vault-*"
       ]
     }
   ],
@@ -61,22 +61,29 @@ module "iam_user_root_cred" {
 }
 
 resource "vault_aws_secret_backend" "aws_dev" {
-  access_key = module.iam_user_root_cred.iam_access_key_id
-  secret_key = module.iam_user_root_cred.iam_access_key_secret
-  region = var.region
-  path =  var.vault_aws_backend_path
+  access_key                = module.iam_user_root_cred.iam_access_key_id
+  secret_key                = module.iam_user_root_cred.iam_access_key_secret
+  region                    = var.region
+  path                      = var.vault_aws_backend_path
   default_lease_ttl_seconds = 900
-  max_lease_ttl_seconds = 1800
+  max_lease_ttl_seconds     = 1800
 }
 
 resource "vault_aws_secret_backend_role" "aws_dev_role" {
-  backend = vault_aws_secret_backend.aws_dev.path
-  name    = var.vault_aws_backend_role_name
+  backend         = vault_aws_secret_backend.aws_dev.path
+  name            = var.vault_aws_backend_role_name
   credential_type = "iam_user"
-  policy_arns = ["arn:aws:iam::aws:policy/AmazonVPCFullAccess"]
+  policy_arns     = ["arn:aws:iam::aws:policy/AdministratorAccess"]
 }
 
-# data "vault_aws_access_credentials" "aws_dev_role_creds" {
-#   backend = vault_aws_secret_backend.aws_dev.path
-#   role    = vault_aws_secret_backend_role.aws_dev_role.name
-# }
+resource "time_sleep" "wait_before_fetching_creds" {
+  depends_on      = [vault_aws_secret_backend_role.aws_dev_role]
+  create_duration = "10s"
+}
+
+data "vault_aws_access_credentials" "aws_dev_role_creds" {
+  depends_on = [time_sleep.wait_before_fetching_creds]
+  backend    = vault_aws_secret_backend.aws_dev.path
+  role       = vault_aws_secret_backend_role.aws_dev_role.name
+  type       = "creds"
+}
