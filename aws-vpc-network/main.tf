@@ -4,15 +4,17 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-data "vault_aws_access_credentials" "dev_role" {
-  backend = "aws-dev"
-  role    = "aws-dev-role"
-}
+# using VAULT BACKED, reading creds and putting back to aws provider is not required 
+# because setting env variable know which aws secret engine backend role need to be used 
+# data "vault_aws_access_credentials" "dev_role" {
+#   backend = "aws-dev"
+#   role    = "aws-dev-role"
+# }
 
-provider "aws" {
-  access_key = data.vault_aws_access_credentials.dev_role.access_key
-  secret_key = data.vault_aws_access_credentials.dev_role.secret_key
-}
+# provider "aws" {
+#   access_key = data.vault_aws_access_credentials.dev_role.access_key
+#   secret_key = data.vault_aws_access_credentials.dev_role.secret_key
+# }
 
 #############################################################
 #################### VPC ####################################
