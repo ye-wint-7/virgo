@@ -1,0 +1,5 @@
+org_name = "HelloCloud-7"
+workspace_name = "aws-vpc-network"
+vault_addr = "value"
+vault_namespace = "admin"
+vault_run_role = "admin-role"
