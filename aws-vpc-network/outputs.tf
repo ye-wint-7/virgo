@@ -21,3 +21,7 @@ output "dev_private_subnet_arns" {
 output "dev_db_subnet_arns" {
   value = aws_subnet.dev_db_subnet[*].arn
 }
+
+output "vpc_id" {
+  value = aws_vpc.dev_vpc.id
+}
