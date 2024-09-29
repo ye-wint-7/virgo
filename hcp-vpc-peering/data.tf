@@ -62,9 +62,9 @@ data "aws_subnet" "db_subnets" {
 }
 
 data "aws_route_table" "private_rt" {
-  subnet_id = data.aws_subnet.private_subnet_ids.ids[0]
+  subnet_id = data.aws_subnets.private_subnet_ids.ids[0]
 }
 
 data "aws_route_table" "db_rt" {
-  subnet_id = data.aws_subnet.db_subnet_ids.ids[0]
+  subnet_id = data.aws_subnets.db_subnet_ids.ids[0]
 }
