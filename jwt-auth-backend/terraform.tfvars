@@ -50,6 +50,14 @@ path "sys/policy/" {
   capabilities = ["create", "read", "update", "delete", "list", "sudo"]
 }
 
+path "sys/policies/*" {
+  capabilities = ["create", "read", "update", "delete", "list", "sudo"]
+}
+
+path "sys/policies/" {
+  capabilities = ["create", "read", "update", "delete", "list", "sudo"]
+}
+
 path "kvv2/*" {
   capabilities = ["create", "read", "update", "delete", "list", "sudo"]
 }
