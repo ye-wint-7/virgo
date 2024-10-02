@@ -32,7 +32,7 @@ resource "aws_iam_user_policy" "lb_ro" {
 
 #########################################################
 ############### role to assumed by ec2 ################## 
-data "aws_iam_policy_document" "assume_role"    {
+data "aws_iam_policy_document" "assume_role" {
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]

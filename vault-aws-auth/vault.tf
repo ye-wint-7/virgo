@@ -38,7 +38,14 @@ path "aws-dev/*" {
 EOT
 }
 
+resource "time_sleep" "wait_before_vault_aws_auth_backend_role" {
+  depends_on      = [aws_iam_role.ec2_role]
+  create_duration = "20s"
+}
+
+
 resource "vault_aws_auth_backend_role" "aws" {
+  depends_on               = [time_sleep.wait_before_vault_aws_auth_backend_role]
   backend                  = vault_auth_backend.aws.path
   role                     = var.aws_auth_backend_role_name
   auth_type                = "iam"
