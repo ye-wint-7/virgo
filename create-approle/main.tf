@@ -15,3 +15,8 @@ resource "vault_approle_auth_backend_role" "aws_approle" {
   token_ttl = 300
   token_max_ttl = 900
 }
+
+resource "vault_approle_auth_backend_role_secret_id" "secret_id" {
+  backend = vault_auth_backend.approle.path
+  role_name = vault_approle_auth_backend_role.aws_approle.role_name
+}
