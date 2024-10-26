@@ -11,3 +11,7 @@ resource "hcp_vault_cluster" "virgo_vault_cluster" {
   tier            = var.hcp_vault_cluster_tier
   public_endpoint = var.hcp_vault_cluster_public_endpoint
 }
+
+resource "hcp_vault_cluster_admin_token" "vault_admin_token" {
+  cluster_id = hcp_vault_cluster.virgo_vault_cluster.cluster_id
+}
